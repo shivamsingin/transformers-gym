@@ -827,17 +827,41 @@ section#testimonials.section-dark::after,
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../assets/img/logo.svg'), url('../assets/img/logo.png');
-  background-position: 50% 38%;
+  background-image: url('../assets/img/logo.svg'), url('../assets/img/logo.png'), url('../favicon.svg');
+  background-position: 50% 38%, 50% 38%, 80% 20%;
   background-repeat: no-repeat;
-  background-size: clamp(480px, 65vmin, 980px); /* bigger */
-  opacity: 0.42; /* brighter */
+  background-size: clamp(480px, 65vmin, 980px), clamp(480px, 65vmin, 980px), clamp(120px, 15vmin, 200px);
+  opacity: 0.42;
   mix-blend-mode: normal;
   filter: contrast(1.15) brightness(1.2);
   pointer-events: none;
   z-index: 0;
   will-change: transform;
-  transform: translate3d(var(--bgX, 0), var(--bgY, 0), 0) scale(var(--bgScale, 1));
+  transform: translate3d(var(--bgX, 0), var(--bgY, 0), 0) scale(var(--bgScale, 1)) rotate(var(--bgRotation, 0deg));
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced parallax effect for background elements */
+#motivation.section-dark::before,
+#programs.section-dark::before,
+#what-we-offer.section-dark::before,
+section#testimonials.section-dark::before,
+#cta-special.section-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/img/TRANSFORMERS GYM LOGO.jpg');
+  background-position: 50% 40%;
+  background-repeat: no-repeat;
+  background-size: clamp(300px, 40vmin, 600px);
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  filter: grayscale(0.3) contrast(1.1);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  transform: translate3d(calc(var(--bgX, 0) * 0.5), calc(var(--bgY, 0) * 0.5), 0) scale(var(--bgScale, 1)) rotate(calc(var(--bgRotation, 0deg) * 0.5));
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #motivation.section-dark .card,

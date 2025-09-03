@@ -415,4 +415,78 @@ qsa('[data-count]').forEach(el => {
   onScroll();
 })();
 
+// Enhanced parallax effect for logo overlay
+function parallaxLogoOverlay() {
+  const darkSections = document.querySelectorAll('#motivation.section-dark, #programs.section-dark, #what-we-offer.section-dark, section#testimonials.section-dark, #cta-special.section-dark');
+  
+  if (darkSections.length === 0) return;
+  
+  let ticking = false;
+  let lastScrollY = window.scrollY;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
+  
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    const scrollProgress = scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    
+    darkSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const sectionProgress = Math.max(0, Math.min(1, 1 - (rect.top + rect.height) / window.innerHeight));
+      
+      // Enhanced parallax with multiple layers
+      const bgX = (lastMouseX - window.innerWidth / 2) * 0.02;
+      const bgY = (lastMouseY - window.innerHeight / 2) * 0.02;
+      const scrollX = (scrollY - lastScrollY) * 0.1;
+      const scrollYOffset = scrollProgress * 20;
+      
+      // Apply different parallax speeds for different elements
+      section.style.setProperty('--bgX', `${bgX + scrollX}px`);
+      section.style.setProperty('--bgY', `${bgY + scrollYOffset}px`);
+      section.style.setProperty('--bgScale', `${1 + sectionProgress * 0.05}`);
+      
+      // Add subtle rotation for dynamic effect
+      const rotation = Math.sin(scrollProgress * Math.PI * 2) * 0.5;
+      section.style.setProperty('--bgRotation', `${rotation}deg`);
+    });
+    
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+  
+  // Mouse move handler with throttling
+  let mouseTimeout;
+  document.addEventListener('mousemove', (e) => {
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+    
+    if (mouseTimeout) clearTimeout(mouseTimeout);
+    mouseTimeout = setTimeout(requestTick, 16); // ~60fps
+  }, { passive: true });
+  
+  // Scroll handler with throttling
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    lastScrollY = window.scrollY;
+    
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(requestTick, 16); // ~60fps
+  }, { passive: true });
+  
+  // Initial update
+  updateParallax();
+}
+
+// Initialize all effects
+initGlobalCounters();
+initCtaPulse();
+setupTiltEffect();
+parallaxLogoOverlay();
+
 
