@@ -828,26 +828,25 @@ section#testimonials.section-dark::after,
   position: absolute;
   inset: 0;
   background-image: url('../img/logo.svg'), url('../img/logo.png');
-  background-position: 50% 40%;
+  background-position: 50% 38%;
   background-repeat: no-repeat;
-  background-size: clamp(360px, 60vmin, 820px); /* larger */
-  opacity: 0.32; /* stronger but still subtle */
+  background-size: clamp(480px, 65vmin, 980px); /* bigger */
+  opacity: 0.42; /* brighter */
   mix-blend-mode: normal;
-  filter: contrast(1.12) brightness(1.1);
+  filter: contrast(1.15) brightness(1.2);
   pointer-events: none;
   z-index: 0;
   will-change: transform;
   transform: translate3d(var(--bgX, 0), var(--bgY, 0), 0) scale(var(--bgScale, 1));
 }
 
-/* Let the background logo show through slightly within these sections */
 #motivation.section-dark .card,
 #programs.section-dark .card,
 #what-we-offer.section-dark .card,
 section#testimonials.section-dark .card,
 #cta-special.section-dark .card {
-  background: rgba(18,18,18,0.78);
-  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(18,18,18,0.70);
+  border: 1px solid rgba(255,255,255,.1);
   box-shadow: var(--shadow-sm);
 }
 
