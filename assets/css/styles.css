@@ -14,6 +14,7 @@
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.45);
   --shadow-sm: 0 8px 24px rgba(0,0,0,0.25);
   --transition: 220ms cubic-bezier(.2,.8,.2,1);
+  --progress-height: 3px;
 }
 
 * { box-sizing: border-box; }
@@ -924,4 +925,27 @@ main .section .container > p {
 .section-title.fold-in.revealed {
   transition-duration: 800ms;
 }
+
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--progress-height);
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--yellow), #ffea80);
+  z-index: 2000;
+  box-shadow: 0 2px 8px rgba(255,211,0,.3);
+}
+
+/* CTA idle pulse */
+.btn.btn-cta.pulse {
+  animation: pulseGlow 1.4s ease-in-out infinite alternate;
+}
+@keyframes pulseGlow {
+  from { box-shadow: 0 10px 30px rgba(255, 211, 0, .3); transform: translateY(-2px); }
+  to   { box-shadow: 0 16px 46px rgba(255, 211, 0, .46); transform: translateY(-4px); }
+}
+
+/* Ensure transforms compose */
+.gallery-card, .hero-stats .card { will-change: transform; }
 

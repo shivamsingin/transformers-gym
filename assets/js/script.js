@@ -320,4 +320,58 @@ if (contactForm) {
   });
 }
 
+// Dynamic: subtle parallax on hero stats and gallery cards
+(function(){
+  const parallaxTargets = [...qsa('.hero-stats .card'), ...qsa('.gallery-card')];
+  if (parallaxTargets.length === 0) return;
+  const strength = 6;
+  function move(e){
+    const { innerWidth:w, innerHeight:h } = window;
+    const rx = (e.clientX / w - 0.5);
+    const ry = (e.clientY / h - 0.5);
+    parallaxTargets.forEach(el => {
+      el.style.transform = `translateY(-6px) rotateX(${(-ry*strength/2)}deg) rotateY(${(rx*strength/2)}deg)`;
+    });
+  }
+  window.addEventListener('mousemove', move, { passive:true });
+})();
+
+// Dynamic: counters on subpages (reuse stat observer on any [data-count])
+qsa('[data-count]').forEach(el => {
+  // Already observed in home; ensure subpages pick up as well
+  if (!el.classList.contains('count-wired')) {
+    el.classList.add('count-wired');
+    statObserver.observe(el);
+  }
+});
+
+// Scroll progress bar
+(function(){
+  let bar = qs('#scroll-progress');
+  if (!bar){
+    bar = document.createElement('div');
+    bar.id = 'scroll-progress';
+    document.body.appendChild(bar);
+  }
+  const onScroll = () => {
+    const scrolled = (window.scrollY || window.pageYOffset);
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const p = docH > 0 ? (scrolled / docH) * 100 : 0;
+    bar.style.transform = `scaleX(${p/100})`;
+  };
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+})();
+
+// CTA idle pulse
+(function(){
+  const ctas = qsa('.btn.btn-cta');
+  let timer;
+  function addPulse(){ ctas.forEach(b => b.classList.add('pulse')); }
+  function removePulse(){ ctas.forEach(b => b.classList.remove('pulse')); }
+  function reset(){ clearTimeout(timer); removePulse(); timer = setTimeout(addPulse, 6000); }
+  ['mousemove','scroll','keydown','touchstart'].forEach(evt => window.addEventListener(evt, reset, { passive:true }));
+  reset();
+})();
+
 
