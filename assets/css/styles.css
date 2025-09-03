@@ -1087,3 +1087,41 @@ main .section .container > p {
   backdrop-filter: saturate(1.1) blur(2px);
 }
 
+.services-page .text-center, .programs-page .text-center { text-align: center; }
+.services-page .centered-blurb, .programs-page .centered-blurb {
+  max-width: 880px;
+  margin: 12px auto 28px;
+  text-align: center;
+}
+.services-page .centered-blurb p, .programs-page .centered-blurb p { margin: 0; }
+
+/* Center align program/equipment/benefits grids and CTA */
+.services-page .program-grid,
+.services-page .equipment-grid,
+.services-page .benefits-grid,
+.programs-page .program-grid,
+.programs-page .equipment-grid,
+.programs-page .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: stretch;
+  text-align: center;
+}
+
+.services-page .program-card,
+.services-page .benefit-item,
+.services-page .equipment-category,
+.programs-page .program-card,
+.programs-page .benefit-item,
+.programs-page .equipment-category {
+  text-align: center;
+}
+
+.services-page .cta-section,
+.programs-page .cta-section { text-align: center; }
+
+.services-page .cta-section .btn,
+.programs-page .cta-section .btn { display: inline-block; margin: 10px auto 0; }
+
