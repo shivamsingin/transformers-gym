@@ -895,11 +895,21 @@ main .section .container > p {
   transform: scale(1.06);
 }
 
+/* Ensure transforms compose via CSS variables */
+.card { --tiltX: 0deg; --tiltY: 0deg; }
+
 /* More dynamic cards: subtle tilt + animated border on hover */
 .card {
   position: relative;
   overflow: hidden;
+  transition: transform var(--transition);
+  transform: translateY(0) rotateX(var(--tiltX)) rotateY(var(--tiltY));
 }
+.card:hover {
+  transform: translateY(-6px) rotateX(var(--tiltX)) rotateY(var(--tiltY));
+}
+
+/* Keep existing gradient border hover */
 .card::before {
   content: "";
   position: absolute;
@@ -912,9 +922,6 @@ main .section .container > p {
   transition: opacity var(--transition);
 }
 .card:hover::before { opacity: .9; }
-.card:hover {
-  transform: translateY(-6px) rotateX(.8deg) rotateY(-.8deg);
-}
 
 /* Staggered reveal hints for 3-up grids */
 .cards-3 .card.float-in { transition-delay: .05s; }

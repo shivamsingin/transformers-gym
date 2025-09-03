@@ -374,4 +374,23 @@ qsa('[data-count]').forEach(el => {
   reset();
 })();
 
+// Sitewide parallax tilt on cards using CSS variables
+(function(){
+  const cards = qsa('.card');
+  if (cards.length === 0) return;
+  const strength = 6;
+  function updateVars(e){
+    const { innerWidth:w, innerHeight:h } = window;
+    const rx = (e.clientX / w - 0.5);
+    const ry = (e.clientY / h - 0.5);
+    const tiltX = (-ry * strength / 2).toFixed(2) + 'deg';
+    const tiltY = ( rx * strength / 2).toFixed(2) + 'deg';
+    cards.forEach(el => {
+      el.style.setProperty('--tiltX', tiltX);
+      el.style.setProperty('--tiltY', tiltY);
+    });
+  }
+  window.addEventListener('mousemove', updateVars, { passive:true });
+})();
+
 
