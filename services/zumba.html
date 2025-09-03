@@ -327,6 +327,12 @@
       </div>
     </footer>
     <script src="../assets/js/script.js"></script>
+    <style>
+      .content-block + .content-block::before { background-image: url('../assets/img/parallax/gym-pilates-1.jpg'); }
+      .content-block:nth-of-type(4n+2) + .content-block::before { background-image: url('../assets/img/parallax/gym-running-1.jpg'); }
+      .content-block:nth-of-type(4n+3) + .content-block::before { background-image: url('../assets/img/parallax/gym-cardio-1.jpg'); }
+      .content-block:nth-of-type(4n+4) + .content-block::before { background-image: url('../assets/img/parallax/gym-yoga-1.jpg'); }
+    </style>
   </body>
 </html>
 
