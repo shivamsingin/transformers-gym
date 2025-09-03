@@ -828,17 +828,17 @@ section#testimonials.section-dark::after,
   position: absolute;
   inset: 0;
   background-image: url('../img/logo.svg');
-  background-position: 50% 38%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: clamp(480px, 65vmin, 980px);
-  opacity: 0.65;
+  background-size: cover; /* cover full section */
+  opacity: 0.55;
   mix-blend-mode: normal;
-  filter: contrast(1.15) brightness(1.2);
+  filter: contrast(1.05) brightness(1.08);
   pointer-events: none;
   z-index: 1;
   will-change: transform;
   transform: translate3d(var(--bgX, 0), var(--bgY, 0), 0) scale(var(--bgScale, 1)) rotate(var(--bgRotation, 0deg));
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.12s ease-out;
 }
 
 /* Enhanced parallax effect for background elements */
@@ -874,7 +874,7 @@ section#testimonials.section-dark .card,
   box-shadow: var(--shadow-sm);
 }
 
-/* Keep content above the logo overlay */
+/* Ensure section containers stack above */
 #motivation.section-dark .container,
 #programs.section-dark .container,
 #what-we-offer.section-dark .container,
@@ -882,6 +882,39 @@ section#testimonials.section-dark .container,
 #cta-special.section-dark .container {
   position: relative;
   z-index: 2;
+}
+
+/* Subpage cards: convert content blocks into a responsive card grid without changing HTML */
+.services-page main .section .container,
+.programs-page main .section .container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.services-page .content-block,
+.programs-page .content-block {
+  grid-column: span 6;
+  background: var(--surface-2, rgba(255,255,255,0.06));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg, 14px);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: saturate(1.1) blur(2px);
+}
+
+.services-page .content-image,
+.programs-page .content-image {
+  grid-column: span 6;
+  border-radius: var(--radius-lg, 14px);
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .services-page .content-block,
+  .programs-page .content-block,
+  .services-page .content-image,
+  .programs-page .content-image { grid-column: 1 / -1; }
 }
 
 /* Separator image between consecutive text blocks */

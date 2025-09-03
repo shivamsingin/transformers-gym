@@ -428,32 +428,28 @@ function parallaxLogoOverlay() {
     const scrollY = window.scrollY;
     const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     const maxScrollable = Math.max(1, docHeight - window.innerHeight);
-    const scrollProgress = scrollY / maxScrollable; // 0 -> 1 across the whole page
+    const progress = scrollY / maxScrollable; // 0..1 across page
 
-    // Global scale that monotonically increases with scroll
-    const maxScale = 2.0; // cap to avoid blur/perf issues
-    const baseScale = 1 + scrollProgress * (maxScale - 1);
+    // Stronger zoom that eases in
+    const maxScale = 2.8; // higher cap for stronger zoom
+    const eased = Math.pow(progress, 0.75); // faster early growth
+    const baseScale = 1 + eased * (maxScale - 1);
 
     darkSections.forEach((section, index) => {
       const rect = section.getBoundingClientRect();
-      const inViewProgress = Math.max(0, Math.min(1, 1 - (rect.top + rect.height) / window.innerHeight));
+      const inViewBoost = Math.max(0, 1 - Math.min(1, rect.top / window.innerHeight));
 
-      // Mouse parallax offsets
-      const bgX = (lastMouseX - window.innerWidth / 2) * 0.02;
-      const bgY = (lastMouseY - window.innerHeight / 2) * 0.02;
+      const bgX = (lastMouseX - window.innerWidth / 2) * 0.015;
+      const bgY = (lastMouseY - window.innerHeight / 2) * 0.015;
 
-      // Slight per-section offset so deeper sections feel a bit larger
-      const sectionBias = index * 0.02;
-
-      // Combine global scroll-based growth with a subtle in-view boost
-      const finalScale = Math.min(maxScale, baseScale + inViewProgress * 0.05 + sectionBias);
+      const bias = index * 0.03; // deeper sections slightly larger
+      const finalScale = Math.min(maxScale, baseScale + inViewBoost * 0.06 + bias);
 
       section.style.setProperty('--bgX', `${bgX}px`);
-      section.style.setProperty('--bgY', `${bgY + scrollProgress * 20}px`);
+      section.style.setProperty('--bgY', `${bgY + progress * 30}px`);
       section.style.setProperty('--bgScale', `${finalScale}`);
 
-      // Optional subtle rotation synced to scroll
-      const rotation = Math.sin(scrollProgress * Math.PI * 2) * 0.5;
+      const rotation = Math.sin(progress * Math.PI * 2) * 0.4;
       section.style.setProperty('--bgRotation', `${rotation}deg`);
     });
 
@@ -461,22 +457,13 @@ function parallaxLogoOverlay() {
   }
 
   function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
+    if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
   }
 
-  document.addEventListener('mousemove', (e) => {
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-    requestTick();
-  }, { passive: true });
-
+  document.addEventListener('mousemove', (e) => { lastMouseX = e.clientX; lastMouseY = e.clientY; requestTick(); }, { passive: true });
   window.addEventListener('scroll', requestTick, { passive: true });
   window.addEventListener('resize', requestTick, { passive: true });
 
-  // Initial paint
   updateParallax();
 }
 
