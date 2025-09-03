@@ -827,7 +827,7 @@ section#testimonials.section-dark::after,
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../img/logo.svg'), url('../img/logo.png');
+  background-image: url('../assets/img/logo.svg'), url('../assets/img/logo.png');
   background-position: 50% 38%;
   background-repeat: no-repeat;
   background-size: clamp(480px, 65vmin, 980px); /* bigger */
