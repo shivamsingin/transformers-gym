@@ -393,7 +393,7 @@ qsa('[data-count]').forEach(el => {
   window.addEventListener('mousemove', updateVars, { passive:true });
 })();
 
-// Parallax for section logo overlays on homepage sections
+// Tweak section logo parallax to avoid blur from scaling
 (function(){
   const sel = ['#motivation.section-dark','#programs.section-dark','#what-we-offer.section-dark','section#testimonials.section-dark','#cta-special.section-dark'];
   const targets = sel.map(s => qs(s)).filter(Boolean);
@@ -402,14 +402,13 @@ qsa('[data-count]').forEach(el => {
     const { innerWidth:w, innerHeight:h } = window;
     const rx = (e.clientX / w - 0.5);
     const ry = (e.clientY / h - 0.5);
-    const tx = (rx * 12).toFixed(2) + 'px';
-    const ty = (ry * 12).toFixed(2) + 'px';
+    const tx = (Math.max(-1, Math.min(1, rx)) * 8).toFixed(2) + 'px';
+    const ty = (Math.max(-1, Math.min(1, ry)) * 8).toFixed(2) + 'px';
     targets.forEach(el => { el.style.setProperty('--bgX', tx); el.style.setProperty('--bgY', ty); });
   }
   function onScroll(){
-    const sy = (window.scrollY || window.pageYOffset) * 0.0008; // subtle scale with scroll
-    const scale = (1 + sy).toFixed(3);
-    targets.forEach(el => el.style.setProperty('--bgScale', scale));
+    const scale = 1.0; // keep at 1 to avoid raster blur
+    targets.forEach(el => el.style.setProperty('--bgScale', String(scale)));
   }
   window.addEventListener('mousemove', onMove, { passive:true });
   window.addEventListener('scroll', onScroll, { passive:true });

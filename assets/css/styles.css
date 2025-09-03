@@ -827,9 +827,9 @@ section#testimonials.section-dark::after,
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../img/logo.png') center / contain no-repeat;
-  opacity: 0.24; /* brighter */
-  filter: grayscale(80%) brightness(1.0) contrast(1.05);
+  background: url('../img/logo.svg') center / clamp(240px, 40vmin, 560px) no-repeat; /* SVG for sharpness */
+  opacity: 0.22;
+  filter: brightness(1.05) contrast(1.12); /* crisper */
   pointer-events: none;
   z-index: 0;
   will-change: transform;
