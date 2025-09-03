@@ -1060,3 +1060,11 @@ main .section .container > p {
   height: 100%;
 }
 
+.cardio-functional .text-center { text-align: center; }
+.cardio-functional .centered-blurb {
+  max-width: 880px;
+  margin: 12px auto 28px;
+  text-align: center;
+}
+.cardio-functional .centered-blurb p { margin: 0; }
+
