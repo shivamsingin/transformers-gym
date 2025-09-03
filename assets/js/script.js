@@ -128,7 +128,7 @@ const io = new IntersectionObserver((entries) => {
 // Use requestIdleCallback for better performance
 if ('requestIdleCallback' in window) {
   requestIdleCallback(() => {
-    qsa('.fade-up, .float-in, .split-char').forEach(el => io.observe(el));
+    qsa('.fade-up, .float-in, .split-char, .flip-in, .fold-in, .zoom-in').forEach(el => io.observe(el));
   });
 } else {
   // Fallback for older browsers

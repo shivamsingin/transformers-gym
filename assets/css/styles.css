@@ -185,6 +185,21 @@ section[id] { scroll-margin-top: 90px; }
 .split-char { display: inline-block; transform: translateY(100%); opacity: 0; }
 .split-char.revealed { transform: translateY(0); opacity: 1; transition: transform 600ms var(--transition), opacity 600ms var(--transition); }
 
+/* Flip/Fold animations */
+.flip-in { opacity: 0; transform: rotateY(90deg); transform-origin: left center; }
+.flip-in.revealed { opacity: 1; transform: rotateY(0); transition: transform 700ms var(--transition), opacity 700ms var(--transition); }
+
+.fold-in { opacity: 0; transform: rotateX(-90deg); transform-origin: top center; }
+.fold-in.revealed { opacity: 1; transform: rotateX(0); transition: transform 700ms var(--transition), opacity 700ms var(--transition); }
+
+.zoom-in { opacity: 0; transform: scale(0.92); }
+.zoom-in.revealed { opacity: 1; transform: scale(1); transition: transform 600ms var(--transition), opacity 600ms var(--transition); }
+
+/* Prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .flip-in, .fold-in, .zoom-in { opacity: 1; transform: none !important; }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .primary-nav { position: fixed; inset: 64px 16px auto 16px; background: rgba(0,0,0,.9); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 12px; transform-origin: top right; transform: scale(.98); opacity: 0; pointer-events: none; transition: var(--transition); }
@@ -790,5 +805,41 @@ section[id] { scroll-margin-top: 90px; }
     font-size: 1rem;
     padding: 0.6rem 1.2rem;
   }
+}
+
+/* Logo background for selected dark sections on homepage */
+#motivation.section-dark,
+#programs.section-dark,
+#what-we-offer.section-dark,
+section#testimonials.section-dark,
+#cta-special.section-dark {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+#motivation.section-dark::after,
+#programs.section-dark::after,
+#what-we-offer.section-dark::after,
+section#testimonials.section-dark::after,
+#cta-special.section-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/logo.png') center / contain no-repeat;
+  opacity: 0.18; /* increased for visibility */
+  filter: grayscale(100%) brightness(0.8);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep content above the logo overlay */
+#motivation.section-dark .container,
+#programs.section-dark .container,
+#what-we-offer.section-dark .container,
+section#testimonials.section-dark .container,
+#cta-special.section-dark .container {
+  position: relative;
+  z-index: 1;
 }
 
