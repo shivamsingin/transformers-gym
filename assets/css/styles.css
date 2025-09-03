@@ -1045,3 +1045,18 @@ main .section .container > p {
 /* Ensure transforms compose */
 .gallery-card, .hero-stats .card { will-change: transform; }
 
+.cardio-functional .feature-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.cardio-functional .feature-list .feature-item,
+.cardio-functional .feature-list .card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
