@@ -12,7 +12,7 @@
     <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon" />
   </head>
-  <body>
+  <body class="services-page cardio-functional">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" role="banner">
       <div class="container nav-container">
@@ -94,7 +94,7 @@
         <div class="container">
           <h2>What You'll Experience</h2>
           
-          <div class="content-block">
+          <div class="content-block card">
             <h3>Cardiovascular Conditioning</h3>
             <p>Our cardio sessions go beyond simple running or cycling. We incorporate interval training, tempo work, and progressive overload to build your aerobic and anaerobic capacity. You'll experience sessions that challenge your heart rate zones while building mental toughness and endurance.</p>
             <p>We use various equipment including rowing machines, assault bikes, treadmills, and outdoor training areas to keep your workouts diverse and engaging. Each session is designed to push your limits while maintaining proper form and technique.</p>
@@ -104,7 +104,7 @@
             <img src="../assets/img/parallax/gym-cardio-1.jpg" alt="Cardiovascular training equipment" class="contextual-image zoom-in" style="max-width: 100%; height: auto;">
           </div>
           
-          <div class="content-block">
+          <div class="content-block card">
             <h3>Functional Movement Patterns</h3>
             <p>Functional training focuses on movements that mimic real-life activities and sports. You'll master fundamental patterns like squatting, hinging, pushing, pulling, and rotating. These movements translate directly to improved performance in daily activities and athletic pursuits.</p>
             <p>Our trainers ensure you develop proper movement mechanics before progressing to more complex exercises. This foundation prevents injuries and creates a solid base for advanced training.</p>
@@ -124,15 +124,15 @@
           <p>We believe that true fitness comes from being able to move well and move often. Our functional training approach emphasizes quality over quantity, ensuring that every movement serves a purpose and contributes to your overall physical development.</p>
           
           <div class="feature-list">
-            <div class="feature-item">
+            <div class="feature-item card">
               <h4>Movement Quality First</h4>
               <p>Every exercise is performed with proper form and technique, ensuring maximum benefit and injury prevention.</p>
             </div>
-            <div class="feature-item">
+            <div class="feature-item card">
               <h4>Progressive Overload</h4>
               <p>We systematically increase the challenge as you improve, ensuring continuous progress and adaptation.</p>
             </div>
-            <div class="feature-item">
+            <div class="feature-item card">
               <h4>Individualized Programming</h4>
               <p>Your training plan is tailored to your current abilities, goals, and any physical limitations you may have.</p>
             </div>
@@ -148,15 +148,15 @@
         <div class="container">
           <h2>Sample Workout Structure</h2>
           <div class="workout-preview">
-            <div class="workout-phase">
+            <div class="workout-phase card">
               <h3>Warm-up (15 minutes)</h3>
               <p>Dynamic stretching, mobility work, and light cardio to prepare your body for the session ahead.</p>
             </div>
-            <div class="workout-phase">
+            <div class="workout-phase card">
               <h3>Main Workout (30-45 minutes)</h3>
               <p>High-intensity intervals, circuit training, or functional movement complexes depending on your training phase.</p>
             </div>
-            <div class="workout-phase">
+            <div class="workout-phase card">
               <h3>Cool-down (10 minutes)</h3>
               <p>Static stretching and recovery techniques to promote flexibility and aid in recovery.</p>
             </div>
@@ -174,19 +174,19 @@
         <div class="container">
           <h2>Why Choose Our Functional Training?</h2>
           <div class="benefits-grid">
-            <div class="benefit-item">
+            <div class="benefit-item card">
               <h4>Injury Prevention</h4>
               <p>By focusing on proper movement patterns and building strength in all planes of motion, we help prevent common injuries.</p>
             </div>
-            <div class="benefit-item">
+            <div class="benefit-item card">
               <h4>Real-World Application</h4>
               <p>Every exercise has a purpose and translates to improved performance in daily activities and sports.</p>
             </div>
-            <div class="benefit-item">
+            <div class="benefit-item card">
               <h4>Efficient Training</h4>
               <p>Our workouts are designed to maximize results in minimal time, perfect for busy professionals and athletes.</p>
             </div>
-            <div class="benefit-item">
+            <div class="benefit-item card">
               <h4>Continuous Progress</h4>
               <p>With our systematic approach, you'll see consistent improvements in strength, endurance, and movement quality.</p>
             </div>
@@ -196,7 +196,7 @@
             <img src="../assets/img/parallax/gym-meditation-1.jpg" alt="Mindfulness and recovery training" class="contextual-image zoom-in" style="max-width: 100%; height: auto;">
           </div>
           
-          <div class="cta-section">
+          <div class="cta-section card">
             <h3>Ready to Transform Your Movement?</h3>
             <p>Join us and experience the difference that proper functional training can make in your life.</p>
             <a href="tel:+919610501901" class="btn btn-cta">Start Training Today</a>
@@ -248,6 +248,21 @@
     </footer>
     <script src="../assets/js/script.js"></script>
     <style>
+      /* Center-align headings and text for this page */
+      .cardio-functional .section h2,
+      .cardio-functional .section h3,
+      .cardio-functional .section h4,
+      .cardio-functional .section p,
+      .cardio-functional .intro-content {
+        text-align: center;
+      }
+      .cardio-functional .feature-list,
+      .cardio-functional .benefits-grid,
+      .cardio-functional .workout-preview {
+        justify-items: center;
+        align-items: stretch;
+      }
+
       /* Page-specific separator images */
       .content-block + .content-block::before { background-image: url('../assets/img/parallax/gym-running-1.jpg'); }
       .content-block:nth-of-type(4n+2) + .content-block::before { background-image: url('../assets/img/parallax/gym-cardio-1.jpg'); }
