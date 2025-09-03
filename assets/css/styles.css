@@ -1087,43 +1087,153 @@ main .section .container > p {
   backdrop-filter: saturate(1.1) blur(2px);
 }
 
-.services-page .text-center, .programs-page .text-center { text-align: center; }
-.services-page .centered-blurb, .programs-page .centered-blurb {
-  max-width: 880px;
-  margin: 12px auto 28px;
-  text-align: center;
-}
-.services-page .centered-blurb p, .programs-page .centered-blurb p { margin: 0; }
-
-/* Center align program/equipment/benefits grids and CTA */
+/* Center align specific grids on subpages */
 .services-page .program-grid,
-.services-page .equipment-grid,
-.services-page .benefits-grid,
 .programs-page .program-grid,
+.services-page .equipment-grid,
 .programs-page .equipment-grid,
-.programs-page .benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  justify-items: center;
-  align-items: stretch;
+.services-page .lifts-grid, /* Added for Strength page */
+.programs-page .lifts-grid, /* Added for Strength page */
+.services-page .phases-grid, /* Added for Strength/Hypertrophy/Mobility */
+.programs-page .phases-grid, /* Added for Strength/Hypertrophy/Mobility */
+.services-page .training-schedule, /* Added for Strength page */
+.programs-page .training-schedule, /* Added for Strength page */
+.services-page .accessory-grid, /* Added for Strength page */
+.programs-page .accessory-grid, /* Added for Strength page */
+.services-page .results-grid, /* Added for Strength/Hypertrophy/Mobility */
+.programs-page .results-grid, /* Added for Strength/Hypertrophy/Mobility */
+.services-page .class-structure, /* Added for Zumba page */
+.programs-page .class-structure, /* Added for Zumba page */
+.services-page .styles-grid, /* Added for Zumba page */
+.programs-page .styles-grid, /* Added for Zumba page */
+.services-page .expectations-grid, /* Added for Zumba page */
+.programs-page .expectations-grid, /* Added for Zumba page */
+.services-page .getting-started, /* Added for Zumba page */
+.programs-page .getting-started, /* Added for Zumba page */
+.services-page .specializations-grid, /* Added for Expert Training page */
+.programs-page .specializations-grid, /* Added for Expert Training page */
+.services-page .trainer-expectations, /* Added for Expert Training page */
+.programs-page .trainer-expectations, /* Added for Expert Training page */
+.services-page .session-structure, /* Added for Expert Training page */
+.programs-page .session-structure, /* Added for Expert Training page */
+.services-page .package-options, /* Added for Expert Training page */
+.programs-page .package-options, /* Added for Expert Training page */
+.services-page .success-metrics, /* Added for Expert Training page */
+.programs-page .success-metrics, /* Added for Expert Training page */
+.services-page .progression-grid, /* Added for Conditioning/Mobility */
+.programs-page .progression-grid, /* Added for Conditioning/Mobility */
+.services-page .workout-examples, /* Added for Conditioning page */
+.programs-page .workout-examples, /* Added for Conditioning page */
+.services-page .equipment-grid, /* Added for Conditioning page */
+.programs-page .equipment-grid, /* Added for Conditioning page */
+.services-page .routine-examples, /* Added for Mobility page */
+.programs-page .routine-examples, /* Added for Mobility page */
+.services-page .integration-grid, /* Added for Mobility page */
+.programs-page .integration-grid, /* Added for Mobility page */
+.services-page .volume-management, /* Added for Hypertrophy page */
+.programs-page .volume-management, /* Added for Hypertrophy page */
+.services-page .exercise-categories, /* Added for Hypertrophy page */
+.programs-page .exercise-categories, /* Added for Hypertrophy page */
+.services-page .advanced-techniques, /* Added for Hypertrophy page */
+.programs-page .advanced-techniques, /* Added for Hypertrophy page */
+.services-page .workout-structure, /* Added for CrossFit page */
+.programs-page .workout-structure, /* Added for CrossFit page */
+.services-page .movements-grid, /* Added for CrossFit page */
+.programs-page .movements-grid, /* Added for CrossFit page */
+.services-page .level-grid, /* Added for CrossFit page */
+.programs-page .level-grid, /* Added for CrossFit page */
+.services-page .benefits-grid, /* Added for CrossFit page */
+.programs-page .benefits-grid /* Added for CrossFit page */
+{
+  max-width: 1200px; /* Adjust as needed */
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
-.services-page .program-card,
-.services-page .benefit-item,
-.services-page .equipment-category,
-.programs-page .program-card,
-.programs-page .benefit-item,
-.programs-page .equipment-category {
+/* Ensure cards in specific grids stretch uniformly and center their content */
+.services-page .grid.cards-3 .card,
+.programs-page .grid.cards-3 .card,
+.services-page .program-grid .program-card,
+.programs-page .program-grid .program-card,
+.services-page .equipment-grid .equipment-category,
+.programs-page .equipment-grid .equipment-category,
+.services-page .benefits-grid .benefit-item,
+.programs-page .benefits-grid .benefit-item,
+.services-page .workout-structure .workout-component,
+.programs-page .workout-structure .workout-component,
+.services-page .movements-grid .movement-category,
+.programs-page .movements-grid .movement-category,
+.services-page .level-grid .level-card,
+.programs-page .level-grid .level-card,
+.services-page .specializations-grid .specialization-card,
+.programs-page .specializations-grid .specialization-card,
+.services-page .trainer-expectations .expectation-item,
+.programs-page .trainer-expectations .expectation-item,
+.services-page .session-structure .session-phase,
+.programs-page .session-structure .session-phase,
+.services-page .package-options .package-option,
+.programs-page .package-options .package-option,
+.services-page .success-metrics .metric-item,
+.programs-page .success-metrics .metric-item,
+.services-page .lifts-grid .lifts-card,
+.programs-page .lifts-grid .lifts-card,
+.services-page .phases-grid .phase-card,
+.programs-page .phases-grid .phase-card,
+.services-page .training-schedule .schedule-item,
+.programs-page .training-schedule .schedule-item,
+.services-page .accessory-grid .accessory-category,
+.programs-page .accessory-grid .accessory-category,
+.services-page .results-grid .result-item,
+.programs-page .results-grid .result-item,
+.services-page .class-structure .structure-phase,
+.programs-page .class-structure .structure-phase,
+.services-page .styles-grid .style-card,
+.programs-page .styles-grid .style-card,
+.services-page .expectations-grid .expectation-item,
+.programs-page .expectations-grid .expectation-item,
+.services-page .getting-started .step-item,
+.programs-page .getting-started .step-item,
+.services-page .progression-grid .progression-phase,
+.programs-page .progression-grid .progression-phase,
+.services-page .workout-examples .routine-examples,
+.programs-page .workout-examples .routine-examples,
+.services-page .routine-examples .routine-examples,
+.programs-page .routine-examples .routine-examples,
+.services-page .integration-grid .integration-item,
+.programs-page .integration-grid .integration-item,
+.services-page .volume-management .volume-aspect,
+.programs-page .volume-management .volume-aspect,
+.services-page .exercise-categories .exercise-categories,
+.programs-page .exercise-categories .exercise-categories,
+.services-page .advanced-techniques .technique-item,
+.programs-page .advanced-techniques .technique-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
+  padding: 1.5rem;
 }
 
+/* Center align CTA sections and buttons */
 .services-page .cta-section,
-.programs-page .cta-section { text-align: center; }
-
+.programs-page .cta-section {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
 .services-page .cta-section .btn,
-.programs-page .cta-section .btn { display: inline-block; margin: 10px auto 0; }
+.programs-page .cta-section .btn {
+  margin-left: auto;
+  margin-right: auto;
+  display: block; /* Ensure button can be centered with margin auto */
+  width: fit-content; /* Shrink to content width */
+}
 
 /* Center plain paragraphs (non-card) on subpages */
 .services-page .section .container > p,
