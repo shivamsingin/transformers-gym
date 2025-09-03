@@ -1125,3 +1125,14 @@ main .section .container > p {
 .services-page .cta-section .btn,
 .programs-page .cta-section .btn { display: inline-block; margin: 10px auto 0; }
 
+/* Center plain paragraphs (non-card) on subpages */
+.services-page .section .container > p,
+.programs-page .section .container > p,
+.services-page .intro-content p,
+.programs-page .intro-content p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90ch;
+}
+
