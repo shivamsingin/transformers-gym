@@ -884,38 +884,54 @@ section#testimonials.section-dark .container,
   z-index: 2;
 }
 
-/* Subpage cards: convert content blocks into a responsive card grid without changing HTML */
-.services-page main .section .container,
-.programs-page main .section .container {
+/* Subpage cards: scoped grids and card sizing */
+.services-page .cards-2,
+.services-page .cards-3,
+.services-page .workout-preview,
+.services-page .feature-list,
+.services-page .benefits-grid,
+.programs-page .cards-2,
+.programs-page .cards-3,
+.programs-page .workout-preview,
+.programs-page .feature-list,
+.programs-page .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+  align-items: stretch;
 }
 
-.services-page .content-block,
-.programs-page .content-block {
-  grid-column: span 6;
-  background: var(--surface-2, rgba(255,255,255,0.06));
-  border: 1px solid rgba(255,255,255,0.08);
+.services-page .card,
+.programs-page .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Keep standalone content blocks centered and tidy */
+.services-page .content-block.card,
+.programs-page .content-block.card {
+  max-width: 900px;
+  margin: 0 auto 24px;
+}
+
+/* Images behave consistently */
+.services-page .content-image img,
+.programs-page .content-image img {
+  width: 100%;
+  height: auto;
   border-radius: var(--radius-lg, 14px);
-  padding: 18px 20px;
-  box-shadow: var(--shadow-sm);
-  backdrop-filter: saturate(1.1) blur(2px);
+  display: block;
 }
 
-.services-page .content-image,
-.programs-page .content-image {
-  grid-column: span 6;
-  border-radius: var(--radius-lg, 14px);
-  overflow: hidden;
-}
-
-@media (max-width: 900px) {
-  .services-page .content-block,
-  .programs-page .content-block,
-  .services-page .content-image,
-  .programs-page .content-image { grid-column: 1 / -1; }
-}
+/* Center headings for services/programs pages */
+.services-page .section h2,
+.services-page .section h3,
+.services-page .section h4,
+.programs-page .section h2,
+.programs-page .section h3,
+.programs-page .section h4 { text-align: center; }
 
 /* Separator image between consecutive text blocks */
 .content-block + .content-block::before {
