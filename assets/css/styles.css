@@ -827,9 +827,13 @@ section#testimonials.section-dark::after,
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../img/logo.svg') center / clamp(240px, 40vmin, 560px) no-repeat; /* SVG for sharpness */
-  opacity: 0.22;
-  filter: brightness(1.05) contrast(1.12); /* crisper */
+  background-image: url('../img/logo.svg'), url('../img/logo.png'); /* SVG with PNG fallback */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: clamp(260px, 42vmin, 600px);
+  opacity: 0.28; /* a bit stronger */
+  mix-blend-mode: normal; /* ensure visible on dark */
+  filter: contrast(1.1) brightness(1.08);
   pointer-events: none;
   z-index: 0;
   will-change: transform;
