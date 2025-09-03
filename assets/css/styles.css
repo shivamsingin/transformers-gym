@@ -843,3 +843,85 @@ section#testimonials.section-dark .container,
   z-index: 1;
 }
 
+/* Separator image between consecutive text blocks */
+.content-block + .content-block::before {
+  content: "";
+  display: block;
+  height: 260px;
+  margin: 24px 0;
+  border-radius: var(--radius);
+  background: url('../img/parallax/gym-yoga-1.jpg') center / cover no-repeat;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+/* Rotate separator image variants for more variety */
+.content-block:nth-of-type(4n+2) + .content-block::before { background-image: url('../img/parallax/gym-running-1.jpg'); }
+.content-block:nth-of-type(4n+3) + .content-block::before { background-image: url('../img/parallax/gym-weights-1.jpg'); }
+.content-block:nth-of-type(4n+4) + .content-block::before { background-image: url('../img/parallax/gym-crossfit-1.jpg'); }
+
+/* Do not show image blocks immediately adjacent to parallax bands */
+.parallax-band + .content-image,
+.content-image + .parallax-band {
+  display: none !important;
+}
+
+/* Also avoid CSS separator before/after parallax bands by nulling the pseudo when near parallax */
+.parallax-band + .content-block::before,
+.content-block:has(+ .parallax-band)::before {
+  display: none !important;
+}
+
+/* Card-ify short standalone paragraphs in subpage sections */
+main .section .container > p {
+  max-width: 70ch;
+  margin: 12px 0;
+  padding: 14px 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Monochrome icons (homepage) */
+.offering-icon, .gallery-card-icon {
+  filter: grayscale(1) contrast(1.2) brightness(0.9);
+  transition: transform var(--transition), filter var(--transition);
+}
+.card:hover .offering-icon,
+.card:hover .gallery-card-icon {
+  filter: grayscale(1) contrast(1.35) brightness(1.05);
+  transform: scale(1.06);
+}
+
+/* More dynamic cards: subtle tilt + animated border on hover */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255,255,255,.06), rgba(255,255,255,0) 40%),
+              linear-gradient(300deg, rgba(255,211,0,.10), rgba(255,211,0,0) 60%);
+  pointer-events: none;
+  opacity: .0;
+  transition: opacity var(--transition);
+}
+.card:hover::before { opacity: .9; }
+.card:hover {
+  transform: translateY(-6px) rotateX(.8deg) rotateY(-.8deg);
+}
+
+/* Staggered reveal hints for 3-up grids */
+.cards-3 .card.float-in { transition-delay: .05s; }
+.cards-3 .card.float-in.delay-1 { transition-delay: .12s; }
+.cards-3 .card.float-in.delay-2 { transition-delay: .18s; }
+
+/* Slightly stronger reveal for section titles */
+.section-title.fold-in.revealed {
+  transition-duration: 800ms;
+}
+
