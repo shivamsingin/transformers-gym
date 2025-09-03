@@ -393,4 +393,27 @@ qsa('[data-count]').forEach(el => {
   window.addEventListener('mousemove', updateVars, { passive:true });
 })();
 
+// Parallax for section logo overlays on homepage sections
+(function(){
+  const sel = ['#motivation.section-dark','#programs.section-dark','#what-we-offer.section-dark','section#testimonials.section-dark','#cta-special.section-dark'];
+  const targets = sel.map(s => qs(s)).filter(Boolean);
+  if (targets.length === 0) return;
+  function onMove(e){
+    const { innerWidth:w, innerHeight:h } = window;
+    const rx = (e.clientX / w - 0.5);
+    const ry = (e.clientY / h - 0.5);
+    const tx = (rx * 12).toFixed(2) + 'px';
+    const ty = (ry * 12).toFixed(2) + 'px';
+    targets.forEach(el => { el.style.setProperty('--bgX', tx); el.style.setProperty('--bgY', ty); });
+  }
+  function onScroll(){
+    const sy = (window.scrollY || window.pageYOffset) * 0.0008; // subtle scale with scroll
+    const scale = (1 + sy).toFixed(3);
+    targets.forEach(el => el.style.setProperty('--bgScale', scale));
+  }
+  window.addEventListener('mousemove', onMove, { passive:true });
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+})();
+
 
