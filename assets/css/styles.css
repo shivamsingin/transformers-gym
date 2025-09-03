@@ -1087,63 +1087,7 @@ main .section .container > p {
   backdrop-filter: saturate(1.1) blur(2px);
 }
 
-/* Center align specific grids on subpages */
-.services-page .program-grid,
-.programs-page .program-grid,
-.services-page .equipment-grid,
-.programs-page .equipment-grid,
-.services-page .lifts-grid, /* Added for Strength page */
-.programs-page .lifts-grid, /* Added for Strength page */
-.services-page .phases-grid, /* Added for Strength/Hypertrophy/Mobility */
-.programs-page .phases-grid, /* Added for Strength/Hypertrophy/Mobility */
-.services-page .training-schedule, /* Added for Strength page */
-.programs-page .training-schedule, /* Added for Strength page */
-.services-page .accessory-grid, /* Added for Strength page */
-.programs-page .accessory-grid, /* Added for Strength page */
-.services-page .results-grid, /* Added for Strength/Hypertrophy/Mobility */
-.programs-page .results-grid, /* Added for Strength/Hypertrophy/Mobility */
-.services-page .class-structure, /* Added for Zumba page */
-.programs-page .class-structure, /* Added for Zumba page */
-.services-page .styles-grid, /* Added for Zumba page */
-.programs-page .styles-grid, /* Added for Zumba page */
-.services-page .expectations-grid, /* Added for Zumba page */
-.programs-page .expectations-grid, /* Added for Zumba page */
-.services-page .getting-started, /* Added for Zumba page */
-.programs-page .getting-started, /* Added for Zumba page */
-.services-page .specializations-grid, /* Added for Expert Training page */
-.programs-page .specializations-grid, /* Added for Expert Training page */
-.services-page .trainer-expectations, /* Added for Expert Training page */
-.programs-page .trainer-expectations, /* Added for Expert Training page */
-.services-page .session-structure, /* Added for Expert Training page */
-.programs-page .session-structure, /* Added for Expert Training page */
-.services-page .package-options, /* Added for Expert Training page */
-.programs-page .package-options, /* Added for Expert Training page */
-.services-page .success-metrics, /* Added for Expert Training page */
-.programs-page .success-metrics, /* Added for Expert Training page */
-.services-page .progression-grid, /* Added for Conditioning/Mobility */
-.programs-page .progression-grid, /* Added for Conditioning/Mobility */
-.services-page .workout-examples, /* Added for Conditioning page */
-.programs-page .workout-examples, /* Added for Conditioning page */
-.services-page .equipment-grid, /* Added for Conditioning page */
-.programs-page .equipment-grid, /* Added for Conditioning page */
-.services-page .routine-examples, /* Added for Mobility page */
-.programs-page .routine-examples, /* Added for Mobility page */
-.services-page .integration-grid, /* Added for Mobility page */
-.programs-page .integration-grid, /* Added for Mobility page */
-.services-page .volume-management, /* Added for Hypertrophy page */
-.programs-page .volume-management, /* Added for Hypertrophy page */
-.services-page .exercise-categories, /* Added for Hypertrophy page */
-.programs-page .exercise-categories, /* Added for Hypertrophy page */
-.services-page .advanced-techniques, /* Added for Hypertrophy page */
-.programs-page .advanced-techniques, /* Added for Hypertrophy page */
-.services-page .workout-structure, /* Added for CrossFit page */
-.programs-page .workout-structure, /* Added for CrossFit page */
-.services-page .movements-grid, /* Added for CrossFit page */
-.programs-page .movements-grid, /* Added for CrossFit page */
-.services-page .level-grid, /* Added for CrossFit page */
-.programs-page .level-grid, /* Added for CrossFit page */
-.services-page .benefits-grid, /* Added for CrossFit page */
-.programs-page .benefits-grid /* Added for CrossFit page */
+.services-page .routine-structure /* Added for Mobility page */
 {
   max-width: 1200px; /* Adjust as needed */
   margin-left: auto;
@@ -1207,7 +1151,23 @@ main .section .container > p {
 .services-page .exercise-categories .exercise-categories,
 .programs-page .exercise-categories .exercise-categories,
 .services-page .advanced-techniques .technique-item,
-.programs-page .advanced-techniques .technique-item {
+.programs-page .advanced-techniques .technique-item,
+.services-page .assessment-grid .assessment-item,
+.programs-page .assessment-grid .assessment-item,
+.services-page .challenges-grid .challenge-item,
+.programs-page .challenges-grid .challenge-item,
+.services-page .approach-grid .approach-step,
+.programs-page .approach-grid .approach-step,
+.services-page .tools-grid .tool-item,
+.programs-page .tools-grid .tool-item,
+.services-page .principles-grid .principle-item,
+.programs-page .principles-grid .principle-item,
+.services-page .methods-grid .method-item,
+.programs-page .methods-grid .method-item,
+.services-page .focus-areas-grid .focus-area,
+.programs-page .focus-areas-grid .focus-area,
+.services-page .routine-structure .routine-phase,
+.programs-page .routine-structure .routine-phase {
   height: 100%;
   display: flex;
   flex-direction: column;
